@@ -2,7 +2,7 @@ var yVal;
 var accel; 
 var velocity; 
 var mass; 
-
+var ellipse;
 
 function setup() {
   createCanvas(640, 360);
@@ -11,7 +11,7 @@ function setup() {
   velocity = 0; 
   mass = 30; 
   
-  accel = mass * 0.1; 
+  accel = mass * 0.01; 
 }
 
 function draw() {
@@ -28,9 +28,8 @@ function draw() {
   }
 }
 
-
-function mousePressed() {
-  yVal = 0;  
-  velocity = 0; 
+function keyPressed(spacebar) {
+ yVal + 30;
+ velocity= - 6;
 }
 
