@@ -15,12 +15,12 @@ class Pipe {
 
   drawPipe() {
     fill("green")
-    rect(this.x, this.y, 50, this.h);
+    rect(this.x, this.y, 40, this.h);
     this.x = this.x - 5;
   }
 }
 
-var birb, pipe, pipe2;
+var pipe, pipe2;
 var pipes = [];
 var rects = [];
 
