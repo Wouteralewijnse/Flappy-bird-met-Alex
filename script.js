@@ -79,7 +79,7 @@ function game() {
     pipes.push(new Pipe(700,randomHeight + 100, 1000, 40));
   }
 
-  if (frameCount % 85 == 0 && pipes.length > 3.9) {
+  if (frameCount % 82 == 0 && pipes.length > 3.9) {
     score = score + 1;
   }
 
