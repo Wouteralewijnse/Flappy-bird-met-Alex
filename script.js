@@ -3,20 +3,30 @@ var accel;
 var velocity; 
 var mass; 
 var ellipse;
-{
-}
 
 class Pipe {
-  constructor(x, y, h) {
+  constructor(x, y, h, w) {
     this.x = x;
     this.y = y;
     this.h = h;
+    this.color = "green";
+    this.w = w;
   }
 
   drawPipe() {
-    fill("green")
-    rect(this.x, this.y, 40, this.h);
+    fill (this.color)
+    rect(this.x, this.y, this.w, this.h);
     this.x = this.x - 5;
+  }
+  checkCollision() {
+  if (width / 2 + 50 > this.x && (width / 2) < this.x + this.w) {
+    if (yVal + mass - 10 > this.y && yVal < this.y + this.h) {
+      this.color = "red";
+    }
+  }
+    else { 
+      this.color = "green";
+    }
   }
 }
 
@@ -49,7 +59,7 @@ function draw() {
     finishGame();
   }
 }
-
+  
 function game() {
   background(bg);
   fill("yellow");
@@ -62,12 +72,15 @@ function game() {
 
     let randomHeight = random(height - 150)
 
-    pipes.push(new Pipe(700,0, randomHeight));
-    pipes.push(new Pipe(700,randomHeight + 100, 1000));
+    pipes.push(new Pipe(700,0, randomHeight, 40));
+    pipes.push(new Pipe(700,randomHeight + 100, 1000, 40));
   }
 
-  pipes.forEach(p => p.drawPipe());
-  
+  pipes.forEach((p) => {
+      p.drawPipe()
+      p.checkCollision()
+    });
+
   velocity += accel; 
   yVal += velocity;
 	image(flappybird, width/2,yVal, mass,mass); 
