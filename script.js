@@ -24,10 +24,12 @@ var pipe, pipe2;
 var pipes = [];
 var rects = [];
 
+let gameState = 0
+
 function setup() {
   createCanvas(640, 360);
 
-
+  presstart = loadImage("images/pressstart.png")
   bg = loadImage("images/Achtergrond flappy bird.png")
   flappybird = loadImage("images/Flappy bird 2.png");
   yVal = 0;  
@@ -36,8 +38,19 @@ function setup() {
   
   accel = mass * 0.01; 
 }
-
 function draw() {
+
+
+  if (gameState == 0) {
+    startGame();
+  } else if (gameState == 1) {
+    playGame();
+  } else if (gameState == 2) {
+    finishGame();
+  }
+}
+
+function game() {
   background(bg);
   fill("yellow");
 
@@ -64,8 +77,32 @@ function draw() {
   }
 }
 
+function startGame() {
+  background (presstart);
+}
+
+function playGame() {
+  game();
+}
+
+function finishGame() {
+  background(endBackground);
+}
+
 function keyPressed(spacebar) {
- yVal + 30;
- velocity= - 6;
+  yVal + 40;
+  // - mass gedeeld door 6 om bij elke mass een proportionele stuiter te krijgen
+  velocity = -mass / 6;
+}
+
+function mousePressed() {
+  console.log(gameState);
+  if (gameState == 0) {
+    gameState += 1;
+
+
+  } else if (gameState == 2) {
+    gameState = 0;
+  }
 }
 
