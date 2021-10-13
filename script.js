@@ -40,8 +40,8 @@ let gameState = 0
 function setup() {
   createCanvas(640, 360);
 
-  endBackground = loadImage("images/game over.png")
-  presstart = loadImage("images/pressstart.png")
+  endBackground = loadImage("images/game over foto.png")
+  presstart = loadImage("images/pressstart foto.png")
   bg = loadImage("images/Achtergrond flappy bird.png")
   flappybird = loadImage("images/Flappy bird 2.png");
   yVal = 0;  
