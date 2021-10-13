@@ -21,6 +21,7 @@ class Pipe {
   checkCollision() {
   if (width / 2 + 50 > this.x && (width / 2) < this.x + this.w) {
     if (yVal + mass - 10 > this.y && yVal < this.y + this.h) {
+      gameState = 2;
       this.color = "red";
     }
   }
@@ -39,6 +40,7 @@ let gameState = 0
 function setup() {
   createCanvas(640, 360);
 
+  endBackground = loadImage("images/game over.png")
   presstart = loadImage("images/pressstart.png")
   bg = loadImage("images/Achtergrond flappy bird.png")
   flappybird = loadImage("images/Flappy bird 2.png");
@@ -96,7 +98,7 @@ function startGame() {
 
 function playGame() {
   game();
-}
+}   
 
 function finishGame() {
   background(endBackground);
@@ -115,6 +117,7 @@ function mousePressed() {
 
 
   } else if (gameState == 2) {
+    pipes = [];
     gameState = 0;
   }
 }
