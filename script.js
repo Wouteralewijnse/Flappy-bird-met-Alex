@@ -34,6 +34,7 @@ class Pipe {
 var pipe, pipe2;
 var pipes = [];
 var rects = [];
+var score = 0;
 
 let gameState = 0
 
@@ -78,6 +79,16 @@ function game() {
     pipes.push(new Pipe(700,randomHeight + 100, 1000, 40));
   }
 
+  if (frameCount % 85 == 0 && pipes.length > 3.9) {
+    score = score + 1;
+  }
+
+
+  fill('white');
+  textSize(25);
+  text('Score: ', 50, 35)
+  text(score, 130, 35);
+
   pipes.forEach((p) => {
       p.drawPipe()
       p.checkCollision()
@@ -118,6 +129,7 @@ function mousePressed() {
 
   } else if (gameState == 2) {
     pipes = [];
+    score = 0;
     gameState = 0;
   }
 }
